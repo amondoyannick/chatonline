@@ -1,0 +1,90 @@
+body{
+  margin
+  : 0;
+  padding: 0;
+  background:#dddcdc ;
+  height:90vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial , Helvetica , sans-serif ;
+
+}
+.boxlogin
+{
+  background: #fff;
+  height: 500px;
+  width:350px;
+  border-radius: 5px;
+  flex-shrink: 0;
+
+}
+.containerlogo{
+  height: 43%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+
+}
+
+.cercle
+{
+  background: rgb(255,165,9);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+
+}
+.cercle img{
+width: 100px;
+}
+.containerinput{
+ height: 57%;
+  
+
+
+}
+.text
+{
+ display: block;
+ box-sizing: border-box;
+ margin: 20px auto ;
+ font-size: 14px;
+ padding: 15px;
+ width: 90%;
+ border:0;
+ background: #dddcdc;
+ outline: none;
+}
+div>label{
+   margin:auto 20px;
+}
+button{
+  display: block;
+ box-sizing: border-box;
+ margin: 20px auto ;
+ font-size: 14px;
+ padding: 15px;
+ width: 90%;
+ border:0;
+ background: rgb(255,165,9);
+ cursor: pointer;
+
+}
+.txt{
+  text-align: center;
+   
+}
+a{
+  text-decoration: none;
+  color:rgb(255,165,9);
+}
+a:hover{
+  text-decoration: none;
+  color:rgb(108, 93, 194);
+}
