@@ -1,4 +1,35 @@
 <?php 
+session_start();
+if(!empty($_SESSION['id'])){
+	header('location:home.php');
+}
+if(!empty($_POST)){
+	extract($_POST);
+	$valid = true ;
+	if(empty($mail)){
+		$valid = false ;
+		$erreurmail = " Indiquer un mail valide" ;
+	}
+	if(empty($pass)){
+		$valid = false ;
+		$erreurpass = " Entrer un mot de pass" ;
+	}
+		require('content/bdd.php');
+		$req = $bdd->prepare('SELECT id_login FROM chatonline  WHERE email =:email AND pass = :pass');
+		$req->execute(array('email'=>$mail, 'pass'=>sha1($pass)));
+		if(!empty($pass) && !empty($mail)){
+			if($req->rowCount()== 0){
+				$valid = false ; 
+				$erreur = "mauvais identifiants";
+			}
+			if($valid){
+				$_SESSION['id'] = $login;
+				header('location:home.php');
+			}
+
+		}
+		
+}
 	
 ?>
 <!DOCTYPE html>
@@ -42,13 +73,15 @@
 					</div>
 			</div>
 			<div class="containerinput">
-				<form action="content/validationregister.php" method="post">
+				<form action="index.php" method="post">
 					<div class="formgroup">
-						<input class="text" type="text" name="mail" placeholder="exemple:nom@gmail.com" maxlength="16">
+						<input class="text" type="text" name="mail" placeholder="exemple:nom@gmail.com" maxlength="16" value="<?php if(isset($mail)) echo $mail ; ?>">
+						<span class="error"><?php if(isset($erreurmail)) echo $erreurmail;  ?> </span>
 						<input class="text" type="text" name="pwd" placeholder="mot de passe">
+						<span class="error"><?php if(isset($erreurpass)) echo $erreurpass;  ?> </span>
 					</div>
 					<div class="formgroup">
-						<button>valider</button>
+						<button >valider</button>
 					</div>
 					<div class="formgroup">
 						
