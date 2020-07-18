@@ -17,14 +17,9 @@
               <form method="POST" action="validationregister.php">
 
                 <div class="formgroup">
-                    <label for="nom">nom:</label>
-                    <input type="text" id="nom" placeholder="nom" required name="nom">
+                    <label for="nom">pseudo:</label>
+                    <input type="text" id="pseudo" placeholder="pseudo" required name="pseudo">
 
-                </div>
-                <div class="formgroup">
-                    <label for="prenom">prenom:</label>
-                    <input type="text" id="prenom" placeholder="prenom" required name="prenom">
-                      
                 </div>
                 <div class="formgroup">
                     <label for="mail">email:</label>
