@@ -6,6 +6,7 @@ body{
     padding:0;
     height:80vh;
     background: #dddcdc;
+    font-family: Arial, 'Myriad pro', sans-serif;
     
 }
 .container{
@@ -14,7 +15,20 @@ body{
     align-items: center;
     padding:15px 0 ;
     
+    
 }
+/* GOBAL    */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {display: block;}
+html[xmlns] .clearfix {display: block;}
+/*titre */
 h3{
     font-weight: bolder;
     font-size: 40px;
@@ -31,6 +45,15 @@ h3{
     box-shadow: 2px 5px 16px black;
      
 }
+.Apropos{
+    width:40%;
+    float:left;
+    height: 580px;
+    display: flex;
+    flex-shrink: 0;
+}
+
+/*  FORMULAIRE       */
 .formgroup{
     margin: 10px 40px ;
 }
@@ -121,5 +144,25 @@ p a:hover{
     .formgroup button{
         text-align: center;
     }
+}
+/*  LOGO     */
+
+.logo img{
+    height:500px;
+    width:500px;
+    display: block;
+   
+}
+div p.text{
+    display: block;
+    text-align:center;
+    color:#fff;
+    position: relative;
+    font-size:30px;
+    top:-100px;
+    font-weight:500;
+    font-family: 'Myriad pro';
+    
+
 }
 
