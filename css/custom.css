@@ -20,24 +20,20 @@ body{
 
 }
 .containerlogo{
-  height: 43%;
+  height: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
   
-  
-
 }
 
 .cercle
 {
-  background: rgb(255,165,9);
   display: flex;
   justify-content: center;
   align-content: center;
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+  height: 867x;
+  width: 867px;
 
 }
 .cercle img{
@@ -68,13 +64,17 @@ button{
   display: block;
  box-sizing: border-box;
  margin: 20px auto ;
- font-size: 14px;
+ font-size: 20px;
  padding: 15px;
  width: 90%;
  border:0;
- background: rgb(255,165,9);
+ background: #f58611;
  cursor: pointer;
 
+}
+button:hover{
+  background:rgba(255, 167, 0.9);
+  color:#fff;
 }
 .txt{
   text-align: center;
@@ -82,9 +82,17 @@ button{
 }
 a{
   text-decoration: none;
-  color:rgb(255,165,9);
+  color:#f58611;
 }
 a:hover{
   text-decoration: none;
-  color:rgb(108, 93, 194);
+  color:rgba(255, 167, 0.9);
+  text-decoration: underline;
+   }
+.error {
+  color: #f55;
+  display:block;
+  background:url(../images/false.png) left no-repeat;
+  padding-left: 25px;
+
 }
