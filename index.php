@@ -1,4 +1,7 @@
+<?php
+session_start();
 
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,39 +18,14 @@
 	<title>home</title>
 </head>
 <body>
-	<nav class="navbar-nav navbar-expand-sm navbar-dark bg-dark pt-3 ">
-		<!--   logo -->
-		<a class="navbar-brand ml-5" href="index.php">CHATonline</a>
-		<!-- img logo -->
-		
 
-		<div class="container">
-
-		<!--link -->
-			<ul  class="navbar-nav float-right">
-				<li class="nav-item">
-					<a href="content/connexion.php" class="nav-link">Connexion</a>
-				</li>
-				<li class="nav-item">
-					<a href="content/Inscription.php" class="nav-link">Inscription</a>
-				</li>
-				<li class="nav-item">
-					<a href="content/compte.php" class="nav-link">Compte</a>
-				</li>
-				<li class="nav-item">
-					<a href="content/blog.php" class="nav-link">Blog</a>
-				</li>
-				<li class="nav-item">
-					<a href="content/deconnexion.php" class="nav-link">Déconnexion</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<?php include('content/include/headHome.php'); ?>
 	<div class="container">
 		<div class="jumbotron">
 			<h1 class="text-center pt-3">Bienvenu sur CHATonline </h1>
 
 		</div>
 	</div>
+
 </body>
 </html>

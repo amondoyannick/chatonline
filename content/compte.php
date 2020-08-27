@@ -1,4 +1,12 @@
+<?php
+declare(strict_types = 1) ;
+session_start();
+if(isset($_SESSION['id'])){
+	header('location:compte.php');
+}
 
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,34 +23,7 @@
 	<title>compte</title>
 </head>
 <body>
-	<nav class="navbar-nav navbar-expand-sm navbar-dark bg-dark  pt-3 ">
-		<!--   logo -->
-		<a class="navbar-brand ml-5" href="compte.php">CHATonline</a>
-		<!-- img logo -->
-		
-
-		<div class="container">
-
-		<!--link -->
-			<ul  class="navbar-nav float-right">
-				<li class="nav-item">
-					<a href="connexion.php" class="nav-link">Connexion</a>
-				</li>
-				<li class="nav-item">
-					<a href="Inscription.php" class="nav-link">Inscription</a>
-				</li>
-				<li class="nav-item">
-					<a href="compte.php" class="nav-link">Compte</a>
-				</li>
-				<li class="nav-item">
-					<a href="blog.php" class="nav-link">Blog</a>
-				</li>
-				<li class="nav-item">
-					<a href="deconnexion.php" class="nav-link">Déconnexion</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<?php include('include/head.php'); ?>
 	<div class="container">
 		<div class="row pt-3 ">
 			<div class="col-md-4"></div>

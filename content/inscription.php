@@ -1,4 +1,46 @@
+<?php
+declare(strict_types = 1) ;
+session_start();
+if(isset($_SESSION['id'])){
+	header('location:connexion.php');
+}
 
+if(!empty($_POST)){
+	extract($_POST) ;
+	$erreur = [] ;
+	require_once('include/functions.php') ;
+	if(empty($email)){
+		$erreur['email'] = 'Adresse e-mail manquante' ;
+	}
+	elseif(!filter_var($email , FILTER_VALIDATE_EMAIL)){
+		$erreur['email'] = 'Adresse e-mail invalide ' ;
+	}
+	elseif(!email_free($email)){
+		$erreur['email'] = 'Adresse e-mail existe deja' ;
+	}
+	if(empty($password)){
+		$erreur['password'] = 'Mot de passe manquant' ;
+	}
+	elseif(strlen($password)<8){
+		$erreur['password'] = 'mot de passe doit au moins faire 8 caractères ' ;
+	}
+	if(empty($passwordconf)){
+		$erreur['passwordconf'] = 'confirmation de mot de passe manquante' ;
+	}
+	elseif($password != $passwordconf){
+		$erreur['passwordconf'] = 'mot de passe différent' ;
+	}
+	if(!$erreur){
+		// include BDD  || recupération des data dans la BDD
+		
+		unset($email) ;
+		$validation = 'Inscription reussie avec succès !' ;
+	}
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,40 +57,36 @@
 	<title>inscription</title>
 </head>
 <body>
-	<nav class="navbar-nav navbar-expand-sm navbar-dark bg-dark pt-3 ">
-		<!--   logo -->
-		<a class="navbar-brand ml-5" href="inscription.php" >CHATonline</a>
-		<!-- img logo -->
-		
-
-		<div class="container">
-
-		<!--link -->
-			<ul  class="navbar-nav float-right">
-				<li class="nav-item">
-					<a href="connexion.php" class="nav-link">Connexion</a>
-				</li>
-				<li class="nav-item">
-					<a href="register.php" class="nav-link">Inscription</a>
-				</li>
-				<li class="nav-item">
-					<a href="compte.php" class="nav-link">Compte</a>
-				</li>
-				<li class="nav-item">
-					<a href="blog.php" class="nav-link">Blog</a>
-				</li>
-				<li class="nav-item">
-					<a href="deconnexion.php" class="nav-link">Déconnexion</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<?php include('include/head.php'); ?>
 	<div class="container">
 		<div class="row pt-3 ">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 pt-3 ">
-				<h1 class="text-center">Inscription</h1>
-			<form class="formgroup pt-3">
+			<h1 class="text-center">Inscription</h1>
+
+			<?php if(isset($erreur['email'])) : ?>
+
+				<div class="alert alert-danger "><?= $erreur['email'] ?></div>
+
+			<?php endif ?>
+			<?php if(isset($erreur['password'])) : ?>
+
+				<div class="alert alert-danger "><?= $erreur['password'] ?></div>
+
+			<?php endif ?>
+			<?php if(isset($erreur['passwordconf'])) : ?>
+
+				<div class="alert alert-danger "><?= $erreur['passwordconf'] ?></div>
+
+			<?php endif ?>
+
+			<?php if(isset($validation)) : ?>
+
+			<div class="alert alert-success "><?= $validation ?></div>
+
+			<?php endif ?>
+
+			<form class="formgroup pt-3" action="inscription.php" method="post">
 				<input type="email" name="email"  placeholder="Adresse e-mail" value="<?php if(isset($email)) echo $email ;  ?>">
 	            <input type="password" name="password"  placeholder="Mot de passe">
 	            <input type="password" name="passwordconf" placeholder="Confirmez le mot de passe">

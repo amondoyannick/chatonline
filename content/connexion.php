@@ -1,4 +1,24 @@
+<?php
+declare(strict_types = 1) ;
+session_start();
+if(isset($_SESSION['id'])){
+	header('location:compte.php');
+}
 
+if(!empty($_POST)){
+	extract($_POST) ;
+	require_once('include/functions.php');
+	$membre = account_exist() ;
+	if($membre){
+		$_SESSION['id'] = $membre['id'];
+		header('location:compte.php') ; 
+	}
+	else{
+		$erreur = 'identifiants erroné ! ';
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,39 +35,18 @@
 	<title>connexion</title>
 </head>
 <body>
-	<nav class="navbar-nav navbar-expand-sm navbar-dark bg-dark  pt-3 ">
-		<!--   logo -->
-		<a class="navbar-brand ml-5" href="connexion.php">CHATonline</a>
-		<!-- img logo -->
-		
-
-		<div class="container">
-
-		<!--link -->
-			<ul  class="navbar-nav float-right">
-				<li class="nav-item">
-					<a href="connexion.php" class="nav-link">Connexion</a>
-				</li>
-				<li class="nav-item">
-					<a href="Inscription.php" class="nav-link">Inscription</a>
-				</li>
-				<li class="nav-item">
-					<a href="compte.php" class="nav-link">Compte</a>
-				</li>
-				<li class="nav-item">
-					<a href="blog.php" class="nav-link">Blog</a>
-				</li>
-				<li class="nav-item">
-					<a href="deconnexion.php" class="nav-link">Déconnexion</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+    <?php include('include/head.php'); ?>
 	<div class="container">
 		<div class="row pt-3 ">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 pt-3 ">
-			<form class="formgroup pt-3">
+			<h1 class="text-center">Connexion</h1>
+			<?php if(isset($erreur)) : ?>
+
+			<div class="alert alert-danger "><?= $erreur ?></div>
+
+			<?php endif ?>
+			<form class="formgroup pt-3" action="connexion.php" method="post">
 				<div class="containerlogo">
 				
 					<div class="cercle"> 
